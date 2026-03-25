@@ -1,0 +1,230 @@
+!###############################################!
+!##                                           ##!
+!##     _  ___  ____   ____     ____________  ##!
+!##    / |/ / |/ / /  / __ \__ / / __/_  __/  ##!
+!##   /    /    / /__/ /_/ / // / _/  / /     ##!
+!##  /_/|_/_/|_/____/\____/\___/___/ /_/      ##!
+!##                                           ##!
+!##                                RUNCARD    ##!
+!###############################################!
+
+
+PROCESS  ZJ
+  collider = pp  sqrts = 13000
+  jet = none[0.]
+END_PROCESS
+
+
+RUN  CMS_Z
+  PDF = CT18ZNNLO[0]
+  multi_channel = -3
+  ${sweep}
+  ${run}
+END_RUN
+
+
+PARAMETERS
+  mass[Z] = 91.15350974
+  width[Z] = 2.493201899
+  mass[W] = 79.90685355
+  width[W] = 2.090431081
+  ! default alpha scheme is Gmu scheme
+END_PARAMETERS
+
+
+SELECTORS
+  select  mll  min = 60  max = 120
+  !> override defaults for Z+jet: run in "inclusive" mode
+  select  njets  min = 0
+  !> this makes the cacl. IR unsafe: need a qTmin cut:
+  select  ptz  min = 1
+END_SELECTORS
+
+
+HISTOGRAMS
+
+   ptz > ptz_all  min=0  max=100  nbins=100
+
+   yz  > yz_all   min=-5  max=+5  nbins=40
+
+   ptz > ptz__-5p0__-4p0  min=0  max=100  nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -5  max = -4.0
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-4p0__-3p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -4.0  max = -3.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-3p5__-3p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -3.5  max = -3.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-3p25__-3p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -3.25  max = -3
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-3p0__-2p75  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -3  max = -2.75
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-2p75__-2p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -2.75  max = -2.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-2p5__-2p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -2.5  max = -2.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-2p25__-2p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -2.25  max = -2.
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-2p__-1p75  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -2.  max = -1.75
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-1p75__-1p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -1.75  max = -1.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-1p5__-1p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -1.5  max = -1.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-1p25__-1p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -1.25  max = -1.0
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-1p0__-0p75  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -1.0  max = -0.75
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-0p75__-0p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -0.75  max = -0.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-0p5__-0p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = -0.5  max = -0.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__-0p25__0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min=-0.25  max=0
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__0__0p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 0  max = 0.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__0p25__0p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 0.25  max = 0.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__0p5__0p75  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 0.5  max = 0.75
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__0p75__1p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 0.75  max = 1
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__1p0__1p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 1  max = 1.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__1p25__1p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 1.25  max = 1.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__1p5__1p75  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 1.5  max = 1.75
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__1p75__2p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 1.75  max = 2
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__2p0__2p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 2  max = 2.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__2p25__2p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 2.25  max = 2.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__2p5__2p75  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 2.5  max = 2.75
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__2p75__3p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 2.75  max = 3
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__3p0__3p25  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 3  max = 3.25
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__3p25__3p5  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 3.25  max = 3.5
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__3p5__4p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 3.5  max = 4.0
+   END_HISTOGRAM_SELECTORS
+
+   ptz > ptz__4p0__5p0  min=0  max=100 nbins=100
+   HISTOGRAM_SELECTORS
+     select  yz  min = 4.0  max = 5.0
+   END_HISTOGRAM_SELECTORS
+
+END_HISTOGRAMS
+
+
+SCALES
+
+  mur = 1   * mll   muf = 1   * mll
+  mur = 2   * mll   muf = 2   * mll
+  mur = 0.5 * mll   muf = 0.5 * mll
+  mur = 2   * mll   muf = 1   * mll
+  mur = 1   * mll   muf = 2   * mll
+  mur = 0.5 * mll   muf = 1   * mll
+  mur = 1   * mll   muf = 0.5 * mll
+
+END_SCALES
+
+
+CHANNELS  ${channels_region}
+  ${channels}
+END_CHANNELS
+
+${toplevel}
